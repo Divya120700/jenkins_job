@@ -1,4 +1,4 @@
- pipeline {
+pipeline {
     agent any
 
     stages {
@@ -8,30 +8,32 @@
             }
         }
 
+        stage('Remove Existing con') {
+            steps {
+                script {
+                    // This command will remove the existing running containers
+                    sh "docker rm -f $(docker ps -q)"
+                }
+            }
+        }
+
         stage('Build and Test') {
             steps {
                 script {
-                    #this command will remove the existing running containers
-                    docker rm -f $(docker ps -q)
                     dockerImage = docker.build("docker-image:latest")
                 }
                 script {
                     sh "docker run -d -p 8054:80 docker-image:latest"
-                    }
                 }
-            
+            }
         }
-      stage('testing container') 
-       {
-        steps
-         {
-         script
-         {
-             sh "curl http://10.196.153.137:8054"
-         }
-     }
-}
 
-        
+        stage('Testing container') {
+            steps {
+                script {
+                    sh "curl http://10.196.153.137:8054"
+                }
+            }
+        }
     }
 }
