@@ -1,6 +1,6 @@
 #!/bin/bash
 CPU_INFO=$(lscpu)
-MEMORY_INFO=$(free -h)
+MEMORY_INFO=$(df -h)
 DATE_INFO=$(date)
 DISK_INFO=$(df -h)
 
