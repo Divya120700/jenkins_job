@@ -14,7 +14,7 @@
                     dockerImage = docker.build("docker-image:latest")
                 }
                 script {
-                    sh "docker run -d -p 8055:80 docker-image:latest"
+                    sh "docker run -d -p 8056:80 docker-image:latest"
                     }
                 }
             
@@ -25,7 +25,7 @@
          {
          script
          {
-             sh "curl http:// 10.196.153.137:8054"
+             sh "curl http:// 10.196.153.137:8056"
          }
      }
 }
