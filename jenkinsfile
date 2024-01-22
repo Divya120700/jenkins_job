@@ -31,7 +31,7 @@ pipeline {
         stage('Testing container') {
             steps {
                 script {
-                    sh "curl http://10.196.153.137:8054"
+                    sh "curl http://10.196.154.184:8054"
                 }
             }
         }
