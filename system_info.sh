@@ -1,6 +1,6 @@
 #!/bin/bash
 CPU_INFO=$(lscpu)
-MEMORY_INFO=$(du -h)
+MEMORY_INFO=$(free -h)
 DATE_INFO=$(date)
 DISK_INFO=$(df -h)
 
@@ -12,7 +12,7 @@ cat <<EOF > /usr/share/nginx/html/index.html
     <title>System Information</title>
 </head>
 <body>
-    <h1>System Information</h1>
+    <h3>System Information</h3>
     <pre>
     CPU Information:
     $CPU_INFO
