@@ -21,7 +21,7 @@ pipeline {
             steps {
                 script {
                    // dockerImage = docker.build("docker-image:latest")
-                   sh "docker build . -t  docker-image:latest
+                   sh "docker build . -t  docker-image:latest"
                 }
                 script {
                     sh "docker run -itd -p 8057:80 docker-image:latest"
