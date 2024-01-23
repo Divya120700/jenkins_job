@@ -49,23 +49,24 @@ cat <<EOF > /usr/share/nginx/html/index.html
     </pre>
 
     <script>
-        // Replace placeholders with actual values on page load
-        document.getElementById('cpu-info-placeholder').innerText = `
-        $CPU_INFO
-        `;
+    // Replace placeholders with actual values on page load
+    document.getElementById('cpu-info-placeholder').innerText = `\`${\`
+    $CPU_INFO
+    \`}\``;
 
-        document.getElementById('memory-info-placeholder').innerText = `
-        $MEMORY_INFO
-        `;
+    document.getElementById('memory-info-placeholder').innerText = `\`${\`
+    $MEMORY_INFO
+    \`}\``;
 
-        document.getElementById('date-info-placeholder').innerText = `
-        $DATE_INFO
-        `;
+    document.getElementById('date-info-placeholder').innerText = `\`${\`
+    $DATE_INFO
+    \`}\``;
 
-        document.getElementById('disk-info-placeholder').innerText = `
-        $DISK_INFO
-        `;
-    </script>
+    document.getElementById('disk-info-placeholder').innerText = `\`${\`
+    $DISK_INFO
+    \`}\``;
+</script>
+
 </body>
 </html>
 EOF
