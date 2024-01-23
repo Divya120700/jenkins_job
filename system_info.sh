@@ -47,25 +47,24 @@ cat <<EOF > /usr/share/nginx/html/index.html
     Disk Space:
     <span id="disk-info-placeholder"></span>
     </pre>
-
-    <script>
-    // Replace placeholders with actual values on page load
-    document.getElementById('cpu-info-placeholder').innerText = `\`${\`
-    $CPU_INFO
-    \`}\``;
-
-    document.getElementById('memory-info-placeholder').innerText = `\`${\`
-    $MEMORY_INFO
-    \`}\``;
-
-    document.getElementById('date-info-placeholder').innerText = `\`${\`
-    $DATE_INFO
-    \`}\``;
-
-    document.getElementById('disk-info-placeholder').innerText = `\`${\`
-    $DISK_INFO
-    \`}\``;
+<script>
+    // Fetch system info on every button click (refresh)
+    document.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('refresh-btn').addEventListener('click', function () {
+            // Trigger a request to the server to run the shell script and update data
+            fetch('/refresh_data')
+                .then(response => response.json())
+                .then(data => {
+                    // Update the HTML content with the new data
+                    document.getElementById('cpu-info-placeholder').innerText = `\`${data.CPU_INFO}\``;
+                    document.getElementById('memory-info-placeholder').innerText = `\`${data.MEMORY_INFO}\``;
+                    document.getElementById('date-info-placeholder').innerText = `\`${data.DATE_INFO}\``;
+                    document.getElementById('disk-info-placeholder').innerText = `\`${data.DISK_INFO}\``;
+                });
+        });
+    });
 </script>
+
 
 </body>
 </html>
