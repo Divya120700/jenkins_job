@@ -20,10 +20,11 @@ pipeline {
         stage('Build and Test') {
             steps {
                 script {
-                    dockerImage = docker.build("docker-image:latest")
+                   // dockerImage = docker.build("docker-image:latest")
+                   sh "docker build . -t  docker-image:latest
                 }
                 script {
-                    sh "docker run -itd -p 8054:80 docker-image:latest"
+                    sh "docker run -itd -p 8057:80 docker-image:latest"
                 }
             }
         }
