@@ -2,20 +2,20 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
+        /*stage('Checkout') {
             steps {
                 checkout scm
             }
-        }
+        }*/
 
-        //stage('Remove Existing con') {
-          //  steps {
-            //    script {
+        /*stage('Remove Existing Containers') {
+            steps {
+                script {
                     // This command will remove the existing running containers
-                    //sh "docker rm -f \$(docker ps -q)"
-              //  }
-           // }
-        //}
+                    sh "docker rm -f \$(docker ps -q)"
+                }
+            }
+        }*/
 
         stage('Build and Test') {
             steps {
@@ -23,17 +23,4 @@ pipeline {
                     dockerImage = docker.build("docker-image:latest")
                 }
                 script {
-                    sh "docker run -d -p 8054:80 docker-image:latest"
-                }
-            }
-        }
-
-        stage('Testing container') {
-            steps {
-                script {
-                    sh "curl http://10.196.153.137:8054"
-                }
-            }
-        }
-    }
-}
+      
