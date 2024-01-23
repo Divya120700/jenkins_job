@@ -30,23 +30,42 @@ cat <<EOF > /usr/share/nginx/html/index.html
         // Fetch system info on every button click (refresh)
         document.addEventListener('DOMContentLoaded', function () {
             document.getElementById('refresh-btn').addEventListener('click', fetchSystemInfo);
-            
-    <pre>
-    CPU Information:
-    $CPU_INFO
-
-    Memory Information:
-    $MEMORY_INFO
-
-    Date and Time:
-    $DATE_INFO
-
-    Disk Space:
-    $DISK_INFO
-    </pre>
         });
     </script>
     <button id="refresh-btn">Refresh</button>
+    
+    <pre>
+    CPU Information:
+    <span id="cpu-info-placeholder"></span>
+
+    Memory Information:
+    <span id="memory-info-placeholder"></span>
+
+    Date and Time:
+    <span id="date-info-placeholder"></span>
+
+    Disk Space:
+    <span id="disk-info-placeholder"></span>
+    </pre>
+
+    <script>
+        // Replace placeholders with actual values on page load
+        document.getElementById('cpu-info-placeholder').innerText = `
+        $CPU_INFO
+        `;
+
+        document.getElementById('memory-info-placeholder').innerText = `
+        $MEMORY_INFO
+        `;
+
+        document.getElementById('date-info-placeholder').innerText = `
+        $DATE_INFO
+        `;
+
+        document.getElementById('disk-info-placeholder').innerText = `
+        $DISK_INFO
+        `;
+    </script>
 </body>
 </html>
 EOF
