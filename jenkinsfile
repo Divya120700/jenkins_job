@@ -32,7 +32,7 @@ pipeline {
         stage('Testing container') {
             steps {
                 script {
-                    sh "curl http://localhost:8054"
+                    sh "curl http://10.110.194.190:8054"
                 }
             }
         }
