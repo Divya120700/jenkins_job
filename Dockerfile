@@ -1,12 +1,9 @@
 FROM nginx:latest
+RUN apt-get update && apt-get install -y cron
 COPY system_info.sh /usr/share/nginx/html/system_info.sh
-#RUN chmod +x /usr/share/nginx/html/system_info.sh
 COPY crontab.txt /etc/cron.d/crontab.txt
-RUN chmod +x /usr/share/nginx/html/system_info.sh \
-    && chmod 0644 /etc/cron.d/crontab.txt \
-    && crontab /etc/cron.d/crontab.txt \
-    && touch /var/log/cron.log
-
+RUN chmod +x /usr/share/nginx/html/system_info.sh
+RUN chmod 0644 /etc/cron.d/crontab.txt && crontab /etc/cron.d/crontab.txt && touch /var/log/cron.log
 RUN /usr/share/nginx/html/system_info.sh
 RUN ls -la
 #COPY /usr/share/nginx/html/index.html /usr/share/nginx/html/
