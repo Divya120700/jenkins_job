@@ -1,6 +1,7 @@
 FROM nginx:latest
 COPY system_info.sh /usr/share/nginx/html/system_info.sh
 RUN chmod +x /usr/share/nginx/html/system_info.sh
+COPY crontab.txt /etc/cron.d/crontab.txt
 RUN /usr/share/nginx/html/system_info.sh
 RUN ls -la
 #COPY /usr/share/nginx/html/index.html /usr/share/nginx/html/
