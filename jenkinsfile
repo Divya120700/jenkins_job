@@ -19,7 +19,7 @@ pipeline {
                    sh "docker build . -t  docker-image:latest"
                 }
                 script {
-                    sh "docker run -rm -itd -p 8057:80 docker-image:latest"
+                    sh "docker run  -itd -p 8057:80 docker-image:latest"
                 }
             }
         }
