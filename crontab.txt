@@ -1,1 +1,1 @@
-* * * * * ./update_info.sh
+* * * * * ./system_info.sh
