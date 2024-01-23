@@ -23,7 +23,7 @@ pipeline {
                     dockerImage = docker.build("docker-image:latest")
                 }
                 script {
-                    sh "docker run -d -p 8054:80 docker-image:latest"
+                    sh "docker run -itd -p 8054:80 docker-image:latest"
                 }
             }
         }
@@ -31,7 +31,7 @@ pipeline {
         stage('Testing container') {
             steps {
                 script {
-                    sh "curl http://10.196.153.137:8054"
+                    sh "curl http://localhost:8054"
                 }
             }
         }
