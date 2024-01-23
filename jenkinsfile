@@ -8,14 +8,14 @@ pipeline {
             }
         }
 
-        stage('Remove Existing con') {
-            steps {
-                script {
+        //stage('Remove Existing con') {
+          //  steps {
+            //    script {
                     // This command will remove the existing running containers
                     //sh "docker rm -f \$(docker ps -q)"
-                }
-            }
-        }
+              //  }
+           // }
+        //}
 
         stage('Build and Test') {
             steps {
