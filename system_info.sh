@@ -1,6 +1,4 @@
 #!/bin/bash
-
-while true; do
   # Capture system information
   CPU_INFO=$(lscpu)
   MEMORY_INFO=$(free -h)
@@ -32,7 +30,3 @@ while true; do
   </body>
   </html>
   EOF
-
-  # Wait for 1 second before the next iteration
-  sleep 1
-done
