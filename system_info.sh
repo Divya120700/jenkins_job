@@ -1,32 +1,38 @@
 #!/bin/bash
-CPU_INFO=$(lscpu)
-MEMORY_INFO=$(df -h)
-DATE_INFO=$(date)
-DISK_INFO=$(df -h)
 
-# Create an HTML file with captured information
-cat <<EOF > /usr/share/nginx/html/index.html
-<!DOCTYPE html>
-<html>
-<head>
-    <title>System Information</title>
-</head>
-<body>
-    <h3>System Information</h3>
-    <pre>
-    CPU Information:
-    $CPU_INFO
+while true; do
+  # Capture system information
+  CPU_INFO=$(lscpu)
+  MEMORY_INFO=$(free -h)
+  DATE_INFO=$(date)
+  DISK_INFO=$(df -h)
 
-    Memory Information:
-    $MEMORY_INFO
+  # Create an HTML file with captured information
+  cat <<EOF > /usr/share/nginx/html/index.html
+  <!DOCTYPE html>
+  <html>
+  <head>
+      <title>System Information</title>
+  </head>
+  <body>
+      <h3>System Information</h3>
+      <pre>
+      CPU Information:
+      $CPU_INFO
 
-    Date and Time:
-    $DATE_INFO
+      Memory Information:
+      $MEMORY_INFO
 
-    Disk Space:
-    $DISK_INFO
-    </pre>
-</body>
-</html>
-EOF
+      Date and Time:
+      $DATE_INFO
 
+      Disk Space:
+      $DISK_INFO
+      </pre>
+  </body>
+  </html>
+  EOF
+
+  # Wait for 1 second before the next iteration
+  sleep 1
+done
